@@ -1,0 +1,46 @@
+{% extends 'user_type.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+
+<body>
+    <!-- <h2>this is login page</h2>
+    {% if context %}
+    <h1>{{response.empname}}</h1><br>
+    {{response.EmpEmail}} <br>
+    {{response.EmpDepartment}} <br>
+    <hr>
+    {% endif%} -->
+    <div class="container mx-auto shadow-lg mt-3 p-3  card mt-2" style="width: 40rem;">
+        {% if messages %}
+        {% for message in messages %}
+
+        {{ message | safe }}
+
+        {% endfor %}
+        {% endif %}
+        <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-1">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
+{% endblock content  %}
